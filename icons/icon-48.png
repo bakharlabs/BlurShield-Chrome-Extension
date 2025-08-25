@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A90E2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2E5BBA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="centerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6BB6FF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4A90E2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Shield shape -->
+  <path d="M512 90C512 90 200 150 200 350C200 650 512 934 512 934C512 934 824 650 824 350C824 150 512 90 512 90Z" 
+        fill="url(#shieldGradient)" 
+        stroke="#2E5BBA" 
+        stroke-width="4"/>
+  
+  <!-- Inner rounded rectangle -->
+  <rect x="320" y="280" width="384" height="280" rx="40" ry="40" 
+        fill="url(#centerGradient)" 
+        opacity="0.9"/>
+  
+  <!-- Eye symbol -->
+  <g transform="translate(512, 420)">
+    <!-- Eye outline -->
+    <ellipse cx="0" cy="0" rx="120" ry="60" fill="white" opacity="0.95"/>
+    
+    <!-- Eye inner -->
+    <ellipse cx="0" cy="0" rx="40" ry="40" fill="#4A90E2"/>
+    
+    <!-- Eye reflection -->
+    <ellipse cx="-12" cy="-12" rx="15" ry="15" fill="white" opacity="0.6"/>
+  </g>
+</svg>
+

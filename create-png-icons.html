@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create PNG Icons for BlurShield</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        canvas { border: 1px solid #ccc; margin: 10px; }
+        .icon-set { margin: 20px 0; }
+        button { background: #4A90E2; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #2E5BBA; }
+    </style>
+</head>
+<body>
+    <h2>BlurShield PNG Icon Generator</h2>
+    <p>This will generate PNG icons for the Chrome extension. Right-click each canvas and "Save image as" to download.</p>
+    
+    <div class="icon-set">
+        <h3>16x16 (Save as: icon-16.png)</h3>
+        <canvas id="icon16" width="16" height="16"></canvas>
+    </div>
+    
+    <div class="icon-set">
+        <h3>32x32 (Save as: icon-32.png)</h3>
+        <canvas id="icon32" width="32" height="32"></canvas>
+    </div>
+    
+    <div class="icon-set">
+        <h3>48x48 (Save as: icon-48.png)</h3>
+        <canvas id="icon48" width="48" height="48"></canvas>
+    </div>
+    
+    <div class="icon-set">
+        <h3>128x128 (Save as: icon-128.png)</h3>
+        <canvas id="icon128" width="128" height="128"></canvas>
+    </div>
+
+    <div class="icon-set">
+        <button onclick="downloadAll()">Download All Icons as ZIP</button>
+    </div>
+
+    <script>
+        function drawShieldIcon(canvas, size) {
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, size, size);
+            
+            // Scale factor
+            const scale = size / 128;
+            
+            // Shield gradient
+            const shieldGradient = ctx.createLinearGradient(0, 0, size, size);
+            shieldGradient.addColorStop(0, '#4A90E2');
+            shieldGradient.addColorStop(1, '#2E5BBA');
+            
+            // Draw shield shape
+            ctx.fillStyle = shieldGradient;
+            ctx.beginPath();
+            ctx.moveTo(size * 0.5, size * 0.08);
+            ctx.bezierCurveTo(size * 0.15, size * 0.2, size * 0.15, size * 0.35, size * 0.15, size * 0.5);
+            ctx.bezierCurveTo(size * 0.15, size * 0.75, size * 0.5, size * 0.92, size * 0.5, size * 0.92);
+            ctx.bezierCurveTo(size * 0.5, size * 0.92, size * 0.85, size * 0.75, size * 0.85, size * 0.5);
+            ctx.bezierCurveTo(size * 0.85, size * 0.35, size * 0.85, size * 0.2, size * 0.5, size * 0.08);
+            ctx.closePath();
+            ctx.fill();
+            
+            // Inner rectangle
+            const centerGradient = ctx.createLinearGradient(size * 0.25, size * 0.27, size * 0.75, size * 0.67);
+            centerGradient.addColorStop(0, '#6BB6FF');
+            centerGradient.addColorStop(1, '#4A90E2');
+            
+            ctx.fillStyle = centerGradient;
+            ctx.globalAlpha = 0.9;
+            ctx.beginPath();
+            ctx.roundRect(size * 0.25, size * 0.27, size * 0.5, size * 0.4, size * 0.06);
+            ctx.fill();
+            ctx.globalAlpha = 1;
+            
+            // Eye
+            ctx.fillStyle = 'white';
+            ctx.globalAlpha = 0.95;
+            ctx.beginPath();
+            ctx.ellipse(size * 0.5, size * 0.47, size * 0.16, size * 0.08, 0, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.globalAlpha = 1;
+            
+            // Eye center
+            ctx.fillStyle = '#4A90E2';
+            ctx.beginPath();
+            ctx.ellipse(size * 0.5, size * 0.47, size * 0.055, size * 0.055, 0, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            // Eye reflection
+            ctx.fillStyle = 'white';
+            ctx.globalAlpha = 0.6;
+            ctx.beginPath();
+            ctx.ellipse(size * 0.47, size * 0.44, size * 0.024, size * 0.024, 0, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.globalAlpha = 1;
+        }
+        
+        // Draw icons
+        drawShieldIcon(document.getElementById('icon16'), 16);
+        drawShieldIcon(document.getElementById('icon32'), 32);
+        drawShieldIcon(document.getElementById('icon48'), 48);
+        drawShieldIcon(document.getElementById('icon128'), 128);
+        
+        function downloadAll() {
+            const sizes = [16, 32, 48, 128];
+            sizes.forEach(size => {
+                const canvas = document.getElementById(`icon${size}`);
+                const link = document.createElement('a');
+                link.download = `icon-${size}.png`;
+                link.href = canvas.toDataURL();
+                link.click();
+            });
+        }
+        
+        console.log('Icons generated! Right-click each canvas and save as PNG files, or click "Download All Icons as ZIP".');
+    </script>
+</body>
+</html>

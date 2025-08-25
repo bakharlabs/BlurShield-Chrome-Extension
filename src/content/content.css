@@ -1,0 +1,81 @@
+/* Content script styles for BlurShield extension */
+
+.blur-anything-blurred {
+  transition: filter 0.3s ease;
+}
+
+.blur-anything-area {
+  border: none;
+  transition: all 0.3s ease;
+  /* Optimize backdrop-filter for uniform blur */
+  isolation: isolate;
+  will-change: backdrop-filter;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  box-sizing: border-box;
+}
+
+.blur-anything-area:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.blur-anything-text-blur {
+  transition: filter 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Only show hover effect when extension is enabled and in eraser mode */
+body.blur-anything-enabled.blur-anything-eraser-mode
+  .blur-anything-text-blur:hover {
+  filter: none !important;
+  background-color: rgba(255, 255, 0, 0.15);
+  border-radius: 2px;
+}
+
+/* Add a subtle indication that text is clickable when in eraser mode */
+body.blur-anything-enabled.blur-anything-eraser-mode .blur-anything-text-blur {
+  outline: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+body.blur-anything-enabled.blur-anything-eraser-mode
+  .blur-anything-text-blur:hover {
+  outline: 1px solid rgba(255, 255, 0, 0.3);
+}
+
+#blur-anything-hover-indicator {
+  transition: all 0.1s ease;
+}
+
+/* Hide elements when extension is disabled */
+.blur-anything-disabled .blur-anything-blurred,
+.blur-anything-disabled .blur-anything-area,
+.blur-anything-disabled .blur-anything-text-blur {
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .blur-anything-blurred,
+  .blur-anything-area,
+  .blur-anything-text-blur,
+  #blur-anything-hover-indicator {
+    transition: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .blur-anything-area {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  #blur-anything-hover-indicator {
+    border-width: 3px;
+    border-color: rgba(0, 124, 186, 1);
+  }
+}

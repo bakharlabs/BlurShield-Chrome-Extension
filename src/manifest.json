@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "name": "BlurShield",
+  "version": "1.0.0",
+  "description": "Ultimate privacy protection - blur any content on web pages with one click",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "permissions": ["storage", "activeTab", "contextMenus", "tabs", "identity"],
+  "oauth2": {
+    "client_id": "1063241686793-e7467aljgg3ifkqn99is7tod7p6493bb.apps.googleusercontent.com",
+    "scopes": ["email", "profile"]
+  },
+  "host_permissions": [
+    "https://firebase.googleapis.com/*",
+    "https://*.firebaseapp.com/*",
+    "https://accounts.google.com/*",
+    "https://*.googleapis.com/*"
+  ],
+
+  "background": {
+    "service_worker": "src/background/background.ts",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/content/content.ts"],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_title": "BlurShield",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "options_page": "src/options/options.html",
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;"
+  }
+}

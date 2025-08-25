@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BlurShield - Settings</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <div class="options-container">
+      <header class="options-header">
+        <div class="header-content">
+          <h1 class="options-title">
+            <span class="options-icon shield-emoji">🛡️</span>
+            BlurShield Settings
+          </h1>
+          <p class="options-subtitle">
+            Configure your privacy and blur preferences
+          </p>
+        </div>
+      </header>
+
+      <main class="options-content">
+        <div class="settings-grid">
+          <!-- General Settings -->
+          <section class="settings-section">
+            <h2 class="section-title">General Settings</h2>
+
+            <div class="setting-item">
+              <div class="setting-info">
+                <label class="setting-label" for="extensionEnabled"
+                  >Enable Extension</label
+                >
+                <p class="setting-description">
+                  Turn the extension on or off globally
+                </p>
+              </div>
+              <div class="setting-control">
+                <label class="toggle-switch">
+                  <input type="checkbox" id="extensionEnabled" checked />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-info">
+                <label class="setting-label" for="defaultBlurIntensity"
+                  >Default Blur Intensity</label
+                >
+                <p class="setting-description">
+                  Set the default blur strength for new blurs
+                </p>
+              </div>
+              <div class="setting-control">
+                <div class="slider-container">
+                  <input
+                    type="range"
+                    id="defaultBlurIntensity"
+                    min="1"
+                    max="20"
+                    value="10"
+                    class="setting-slider"
+                  />
+                  <span class="slider-value" id="blurIntensityValue">10px</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Toolbar Guide -->
+          <section class="settings-section">
+            <h2 class="section-title">Toolbar Guide</h2>
+            <p class="section-description">
+              Learn how to use the floating toolbar that appears when you click
+              the extension icon.
+            </p>
+
+            <div class="toolbar-guide">
+              <div class="guide-item">
+                <div class="guide-icon blur-icon">
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M12,2A3,3 0 0,1 15,5V11A3,3 0 0,1 12,14A3,3 0 0,1 9,11V5A3,3 0 0,1 12,2Z"
+                    />
+                  </svg>
+                </div>
+                <div class="guide-content">
+                  <h3>Click Blur Mode</h3>
+                  <p>
+                    Click on any element (images, divs, buttons) to blur them
+                    instantly. Great for hiding sensitive content quickly.
+                  </p>
+                </div>
+              </div>
+
+              <div class="guide-item">
+                <div class="guide-icon draw-icon">
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,5V19H5V5H19Z"
+                    />
+                  </svg>
+                </div>
+                <div class="guide-content">
+                  <h3>Draw Areas Mode</h3>
+                  <p>
+                    Click and drag to create custom rectangular blur areas.
+                    Perfect for blurring specific sections or multiple elements
+                    at once.
+                  </p>
+                </div>
+              </div>
+
+              <div class="guide-item">
+                <div class="guide-icon text-icon">
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M18.5,4L19.66,8.35L18.7,8.61C18.25,7.74 17.79,6.87 17.26,6.43C16.73,6 16.11,6 15.5,6H13V16.5C13,17 13,17.5 13.33,17.75C13.67,18 14.33,18 15,18V19H9V18C9.67,18 10.33,18 10.67,17.75C11,17.5 11,17 11,16.5V6H8.5C7.89,6 7.27,6 6.74,6.43C6.21,6.87 5.75,7.74 5.3,8.61L4.34,8.35L5.5,4H18.5Z"
+                    />
+                  </svg>
+                </div>
+                <div class="guide-content">
+                  <h3>Text Selection Mode</h3>
+                  <p>
+                    Select any text on the page to blur it. Ideal for hiding
+                    sensitive text content, passwords, or personal information.
+                  </p>
+                </div>
+              </div>
+
+              <div class="guide-item">
+                <div class="guide-icon eraser-icon">
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M16.24,3.56L21.19,8.5C21.97,9.29 21.97,10.55 21.19,11.34L12,20.53C10.44,22.09 7.91,22.09 6.34,20.53L2.81,17C2.03,16.21 2.03,14.95 2.81,14.16L13.41,3.56C14.2,2.78 15.46,2.78 16.24,3.56M4.22,15.58L7.76,19.11C8.54,19.9 9.8,19.9 10.59,19.11L14.12,15.58L9.17,10.63L4.22,15.58Z"
+                    />
+                  </svg>
+                </div>
+                <div class="guide-content">
+                  <h3>Eraser Mode</h3>
+                  <p>
+                    Remove existing blurs by clicking on them. Use this to undo
+                    specific blurs without clearing everything.
+                  </p>
+                </div>
+              </div>
+
+              <div class="guide-item">
+                <div class="guide-icon toggle-icon">
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M12,18.5C16.14,18.5 19.5,15.14 19.5,11C19.5,6.86 16.14,3.5 12,3.5C7.86,3.5 4.5,6.86 4.5,11C4.5,15.14 7.86,18.5 12,18.5M12,2A9,9 0 0,1 21,11A9,9 0 0,1 12,20A9,9 0 0,1 3,11A9,9 0 0,1 12,2M12,6A5,5 0 0,1 17,11A5,5 0 0,1 12,16A5,5 0 0,1 7,11A5,5 0 0,1 12,6Z"
+                    />
+                  </svg>
+                </div>
+                <div class="guide-content">
+                  <h3>Show/Hide Blurs</h3>
+                  <p>
+                    Toggle all blurs on the page on/off without removing them
+                    permanently. Great for temporarily viewing content.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Keyboard Shortcuts -->
+          <section class="settings-section">
+            <h2 class="section-title">Keyboard Shortcuts</h2>
+
+            <div class="shortcuts-list">
+              <div class="shortcut-item">
+                <div class="shortcut-keys">
+                  <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>B</kbd>
+                </div>
+                <div class="shortcut-description">
+                  Toggle draw mode for custom blur areas
+                </div>
+              </div>
+
+              <div class="shortcut-item">
+                <div class="shortcut-keys">
+                  <kbd>Esc</kbd>
+                </div>
+                <div class="shortcut-description">Exit draw mode</div>
+              </div>
+
+              <div class="shortcut-item">
+                <div class="shortcut-keys">
+                  <span class="shortcut-text">Right-click selected text</span>
+                </div>
+                <div class="shortcut-description">
+                  Blur selected text via context menu
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Data Management -->
+          <section class="settings-section">
+            <h2 class="section-title">Data Management</h2>
+
+            <div class="setting-item">
+              <div class="setting-info">
+                <h3 class="setting-label">Clear All Data</h3>
+                <p class="setting-description">
+                  Remove all saved blur data from all websites
+                </p>
+              </div>
+              <div class="setting-control">
+                <button class="danger-button" id="clearAllData">
+                  <svg class="button-icon" viewBox="0 0 24 24">
+                    <path
+                      d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                    />
+                  </svg>
+                  Clear All Data
+                </button>
+              </div>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-info">
+                <h3 class="setting-label">Export Settings</h3>
+                <p class="setting-description">
+                  Download your settings and blur data as a backup file
+                </p>
+              </div>
+              <div class="setting-control">
+                <button class="secondary-button" id="exportSettings">
+                  <svg class="button-icon" viewBox="0 0 24 24">
+                    <path
+                      d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"
+                    />
+                  </svg>
+                  Export Settings
+                </button>
+              </div>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-info">
+                <h3 class="setting-label">Import Settings</h3>
+                <p class="setting-description">
+                  Restore settings and blur data from a backup file
+                </p>
+              </div>
+              <div class="setting-control">
+                <input
+                  type="file"
+                  id="importFile"
+                  accept=".json"
+                  style="display: none"
+                />
+                <button class="secondary-button" id="importSettings">
+                  <svg class="button-icon" viewBox="0 0 24 24">
+                    <path
+                      d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"
+                    />
+                  </svg>
+                  Import Settings
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Premium Features -->
+          <section class="settings-section premium-section">
+            <h2 class="section-title">
+              <svg class="premium-icon" viewBox="0 0 24 24">
+                <path
+                  d="M5,16L3,5H7L8.5,11L10,5H14L15.5,11L17,5H21L19,16H15L13.5,9.5L12,16H8L6.5,9.5L5,16Z"
+                />
+              </svg>
+              Premium Features
+            </h2>
+
+            <div class="coming-soon-card">
+              <div class="coming-soon-icon">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M16.2,16.2L11,13V7H12.5V12.2L17,14.9L16.2,16.2Z"
+                  />
+                </svg>
+              </div>
+              <h3>Payment System Coming Soon!</h3>
+              <p>
+                We're working on integrating a premium subscription system that
+                will unlock advanced features like unlimited blurs, custom blur
+                styles, and enhanced privacy options.
+              </p>
+
+              <div class="features-preview">
+                <div class="feature-item">
+                  <span class="feature-icon">🚀</span>
+                  <span>Unlimited daily blurs</span>
+                </div>
+                <div class="feature-item">
+                  <span class="feature-icon">🎨</span>
+                  <span>Advanced blur effects</span>
+                </div>
+                <div class="feature-item">
+                  <span class="feature-icon">🔒</span>
+                  <span>Enhanced privacy features</span>
+                </div>
+                <div class="feature-item">
+                  <span class="feature-icon">⚡</span>
+                  <span>Priority support</span>
+                </div>
+              </div>
+
+              <div class="current-benefits">
+                <p>
+                  <strong>Currently:</strong> Signing in gives you access to
+                  premium-level features for free while we finalize the payment
+                  system!
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <footer class="options-footer">
+        <div class="footer-content">
+          <div class="footer-info">
+            <span class="app-version">BlurShield v1.0.0</span>
+            <span class="separator">•</span>
+            <a href="#" class="footer-link">Privacy Policy</a>
+            <span class="separator">•</span>
+            <a href="#" class="footer-link">Support</a>
+          </div>
+
+          <div class="footer-actions">
+            <button class="footer-button" id="resetToDefaults">
+              Reset to Defaults
+            </button>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast" style="display: none">
+      <div class="toast-content">
+        <span class="toast-message"></span>
+        <button
+          class="toast-close"
+          onclick="this.parentElement.parentElement.style.display='none'"
+        >
+          &times;
+        </button>
+      </div>
+    </div>
+
+    <script type="module" src="options.ts"></script>
+  </body>
+</html>

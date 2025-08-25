@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BlurShield Icon Generator</title>
+</head>
+<body>
+    <h2>BlurShield Icon Generator</h2>
+    <p>Right-click each canvas and "Save image as" to save the icon files:</p>
+    
+    <div>
+        <h3>16x16 (Save as: icon-16.png)</h3>
+        <canvas id="icon16" width="16" height="16" style="border: 1px solid #ccc; image-rendering: -webkit-optimize-contrast;"></canvas>
+    </div>
+    
+    <div>
+        <h3>32x32 (Save as: icon-32.png)</h3>
+        <canvas id="icon32" width="32" height="32" style="border: 1px solid #ccc; image-rendering: -webkit-optimize-contrast;"></canvas>
+    </div>
+    
+    <div>
+        <h3>48x48 (Save as: icon-48.png)</h3>
+        <canvas id="icon48" width="48" height="48" style="border: 1px solid #ccc; image-rendering: -webkit-optimize-contrast;"></canvas>
+    </div>
+    
+    <div>
+        <h3>128x128 (Save as: icon-128.png)</h3>
+        <canvas id="icon128" width="128" height="128" style="border: 1px solid #ccc; image-rendering: -webkit-optimize-contrast;"></canvas>
+    </div>
+
+    <script>
+        function drawShieldIcon(canvas, size) {
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, size, size);
+            
+            // Scale factor
+            const scale = size / 128;
+            ctx.scale(scale, scale);
+            
+            // Shield gradient
+            const shieldGradient = ctx.createLinearGradient(0, 0, 128, 128);
+            shieldGradient.addColorStop(0, '#4A90E2');
+            shieldGradient.addColorStop(1, '#2E5BBA');
+            
+            // Draw shield shape
+            ctx.fillStyle = shieldGradient;
+            ctx.beginPath();
+            ctx.moveTo(64, 10);
+            ctx.bezierCurveTo(20, 25, 20, 45, 20, 65);
+            ctx.bezierCurveTo(20, 95, 64, 118, 64, 118);
+            ctx.bezierCurveTo(64, 118, 108, 95, 108, 65);
+            ctx.bezierCurveTo(108, 45, 108, 25, 64, 10);
+            ctx.closePath();
+            ctx.fill();
+            
+            // Inner rectangle gradient
+            const centerGradient = ctx.createLinearGradient(32, 35, 96, 85);
+            centerGradient.addColorStop(0, '#6BB6FF');
+            centerGradient.addColorStop(1, '#4A90E2');
+            
+            // Draw inner rectangle
+            ctx.fillStyle = centerGradient;
+            ctx.globalAlpha = 0.9;
+            ctx.beginPath();
+            ctx.roundRect(32, 35, 64, 50, 8);
+            ctx.fill();
+            ctx.globalAlpha = 1;
+            
+            // Draw eye
+            ctx.fillStyle = 'white';
+            ctx.globalAlpha = 0.95;
+            // Eye outline (ellipse)
+            ctx.beginPath();
+            ctx.ellipse(64, 60, 20, 10, 0, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.globalAlpha = 1;
+            
+            // Eye center
+            ctx.fillStyle = '#4A90E2';
+            ctx.beginPath();
+            ctx.ellipse(64, 60, 7, 7, 0, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            // Eye reflection
+            ctx.fillStyle = 'white';
+            ctx.globalAlpha = 0.6;
+            ctx.beginPath();
+            ctx.ellipse(60, 56, 3, 3, 0, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.globalAlpha = 1;
+            
+            // Reset scale
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+        }
+        
+        // Draw icons
+        drawShieldIcon(document.getElementById('icon16'), 16);
+        drawShieldIcon(document.getElementById('icon32'), 32);
+        drawShieldIcon(document.getElementById('icon48'), 48);
+        drawShieldIcon(document.getElementById('icon128'), 128);
+        
+        console.log('Icons generated! Right-click each canvas and save as PNG files in the icons/ folder.');
+    </script>
+</body>
+</html>
+
