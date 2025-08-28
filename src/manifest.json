@@ -1,8 +1,9 @@
 {
   "manifest_version": 3,
   "name": "BlurShield",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Ultimate privacy protection - blur any content on web pages with one click",
+  "homepage_url": "https://gist.githubusercontent.com/bakharlabs/a56da48bab1c55af033c76816e553360/raw/privacy-policy.html",
   "icons": {
     "16": "icons/icon-16.png",
     "32": "icons/icon-32.png",

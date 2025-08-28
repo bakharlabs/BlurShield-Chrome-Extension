@@ -1,6 +1,6 @@
 {
   "name": "blur-anything",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Chrome extension for blurring content on web pages for privacy and focus",
   "type": "module",
   "scripts": {
